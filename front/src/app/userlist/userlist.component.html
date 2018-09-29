@@ -1,0 +1,28 @@
+<br> <br>
+<div class="panel panel-default">
+    <div class="panel-heading custom_class">  
+      <h1 align="center"> List Of Documents </h1>
+    </div>
+</div>
+<br>
+<div class="card">
+  <div class="card-body">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <td>File Name</td>
+              <td>File</td>  
+              <td>Download</td>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let val of userListData">
+                  <td>{{val.name}}</td>
+                  <td>{{val.filename}}</td>
+                  <td> Download</td>
+              </tr>
+          </tbody>
+        </table>
+
+  </div>
+</div>

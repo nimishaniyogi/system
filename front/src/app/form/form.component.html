@@ -1,0 +1,32 @@
+<br> <br>
+<div class="panel panel-default">
+  <div class="panel-heading custom_class">  
+    <h1 align="center"> Documentation</h1>
+  </div>
+</div>
+<br>
+
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-body">
+      <form #userform="ngForm" (Submit)="Submit(userform)">
+        <div class="form-group">
+          <label for="name">
+            <b>File Name</b>
+          </label>
+          <input type="text" class="form-control" name="name" [(ngModel)]="userModel.name">
+        </div>
+        <!-- <input type="file" (change)="onFileSelected($event)"> -->
+        <br>
+    
+        <!-- Sai File Create-->
+        <input type="file" id="inputGroupFile01" (change)="onFileSelected($event)">
+        <!-- Sai File Create End-->
+        <br>
+        <br>
+        <button class="btn btn-primary" type="submit" (click)="submit()"> Submit </button>
+      </form>
+    </div>
+  </div>
+</div>
+
