@@ -12,7 +12,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserlistService } from './service/userlist.service';
 
-//import { HttpClient} from '@angular/common/http';
 
 
 

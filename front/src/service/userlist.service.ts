@@ -16,7 +16,7 @@ export class UserlistService {
   downloadFile(fileName) {
 
     return this.http.get(`${this.path}/download/${fileName}`,{responseType: ResponseContentType.Blob})
-    // .map(response => (response).blob())
+   
   }
 
 }
