@@ -29,33 +29,31 @@ app.post('/create', (req, res) =>  {
  
   var user = req.body; 
   console.log('user req body', user); 
-  //var user = new User(userData);
+  
   nodemailer.createTestAccount((err, account) =>  {
-    // create reusable transporter object using the default SMTP transport
+   
     let transporter = nodemailer.createTransport( {
       host:'smtp.gmail.com', 
       port:587, 
       secure:false, 
        auth: {
-        user:`3dprintlibrarywsu@gmail.com`, // generated ethereal user
-pass:`aamariwsu` // generated ethereal password
+        user:` `, // generated ethereal user
+pass:` ` // generated ethereal password
       }, 
       tls: {
         rejectUnauthorized:false, 
       }, 
     }); 
-    // get file extension
-    // setup email data with unicode symbols
+  
     console.log('fileUser', user); 
     console.log('filePath', user.fileName); 
     let mailOptions =  {
-      from:'"Register App 👻" <register@example.com>', // sender address
-to:'3dprintlibrarywsu@gmail.com', // list of receivers
+      from:'" ', // sender address
+to:' ', // list of receivers
 subject:'New document upoaded', // Subject line
 text:'Hello, Following is the new document uploaded', // plain text body
-html:` < b > Details: </b >  < h2 > Name:$ {user.name} </h2 >< br > `, // User Data : ${JSON.stringify(user)} // html body 
-// for user email : user.email (for reference see your user model), for color: user.Color
-attachments:[ {// file on disk as an attachment; get the same name from database saved event
+html:` < b > Details: </b >  < h2 > Name:$ {user.name} </h2 >< br > `, 
+attachments:[ {
 filename:user.filename, 
         path:__dirname + '/upload/' + user.filename // stream this file
       }]
@@ -67,18 +65,15 @@ filename:user.filename,
         return console.log(error); 
       }
       console.log('Message sent: %s', info.messageId); 
-      // Preview only available when sending through an Ethereal account
+      
       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info)); 
-
-      // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-      // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
     }); 
   }); 
-  // ********************************************************************************
+ 
  var userData = req.body; 
   console.log('request body', req.body); 
   var user = new User(userData); 
-  // var user=userData;
+
 
  user.save((err, result) =>  {
     if (err)
@@ -92,13 +87,12 @@ filename:user.filename,
 app.post('/upload/:name', function uploadAudio(req, res) {
   var fileName = req.params.name; 
 
-  // Store the files in /upload folder inside root directory
   var tmpUploadsPath = './upload'
   var storage = multer.diskStorage( {
     destination:tmpUploadsPath, 
     filename:function (req, file, cb) {
       crypto.pseudoRandomBytes(16, function (err, raw) {
-        // set filename to the passed filename in the endpoint
+        
         console.log(`fname:`, fileName); 
         cb(null, fileName); 
       }); 
@@ -113,12 +107,10 @@ app.post('/upload/:name', function uploadAudio(req, res) {
       console.log(err); 
       return res.end('Error'); 
     }else {
-      // console.log(`upload-req-body:`);
-      // console.log(req.body);
+     
       req.files.forEach(function (item) {
         console.log(`upload - item:` + JSON.stringify(item)); 
-        // move your file to destination
-        // Moving file to destination End
+        
       }); 
       res.end('File uploaded'); 
     }
@@ -130,17 +122,12 @@ app.post('/upload/:name', function uploadAudio(req, res) {
 //download file
 app.get('/download/:fileName', function(req, res) {
   let reqFileName = req.params.fileName;
-   
-  // var file = __dirname + '/upload/' + user.filename;
   var fileName = 'upload/' + reqFileName; 
-  // var fileName = '/test/testFile.xlsx'; 
-
-
-  res.download(fileName); // Set disposition and send it.
+ res.download(fileName); 
 }); 
 
-
-mongoose.connect('mongodb://sysinterface:system17@ds131312.mlab.com:31312/sys_interface', {
+// link of the database
+mongoose.connect('mongodb://<dbuser>:<dbpassword>@link', {
 useNewUrlParser:true
   }, (err) =>  {
     if ( ! err)
