@@ -19,7 +19,7 @@
               <tr *ngFor="let val of userListData">
                   <td>{{val.name}}</td>
                   <td>{{val.filename}}</td>
-                  <td> Download</td>
+                  <td><button (click)="downloadFile(val.filename)">Download</button> </td>
               </tr>
           </tbody>
         </table>

@@ -24,7 +24,16 @@ export class UserlistComponent implements OnInit {
               this.userListData = this.res;
           }
       })
+      
+  }
 
+  downloadFile(fileName:string ) {
+    this.userlistservice.downloadFile(fileName).subscribe((file)=>{
+        console.log('here we are', file, file['_body']);
+        
+        var url= window.URL.createObjectURL(file['_body']);
+        window.open(url);
+    });
   }
 }
 
